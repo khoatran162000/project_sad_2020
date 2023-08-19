@@ -1,6 +1,6 @@
 <?php 
 	include 'inc/header.php';
-	include 'inc/slider.php';
+	// include 'inc/slider.php';
  ?>
 
  <div class="main">
@@ -11,7 +11,7 @@
   				<p><span>24 hours | 7 days a week | Live Technical Support</span></p>
   				<p> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
   			</div>
-  				<img src="web/images/contact.png" alt="" />
+
   			<div class="clear"></div>
   		</div>
     	<div class="section group">
@@ -44,13 +44,13 @@
 				<div class="col span_1_of_3">
       			<div class="company_address">
 				     	<h2>Company Information :</h2>
-						    	<p>Nguyen Trai Street</p>
-						   		<p>Nam Tu Liem District</p>
+						    	<p>FIT TECH STORE</p>
+						   		<p>Km9, Nguyen Trai St., Nam Tu Liem District</p>
 						   		<p>Hanoi, Vietnam</p>
 				   		<p>Phone: 0917741703</p>
 				   		<p>Fax: 0917741703</p>
-				 	 	<p>Email: <span>contactmail@fittechstore.com</span></p>
-				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
+				 	 	<p>Email: <span>fitsupport@fittechstore.com</span></p>
+				   		<p>Follow on: <span>Facebook</span>, <span>Instagram</span></p>
 				   </div>
 				 </div>
 			  </div>    	

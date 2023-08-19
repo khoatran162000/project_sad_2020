@@ -33,10 +33,6 @@
                         <li><a href="sliderlist.php">Slider List</a> </li>
                     </ul>
                 </li>
-                 
-                 
-                
-                
             </ul>
         </div>
     </div>

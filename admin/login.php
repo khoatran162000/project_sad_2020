@@ -1,19 +1,9 @@
 <?php 
 	// gọi file adminlogin
-	include '../classes/adminlogin.php';
+	include '../model/adminlogin.php';
  ?>
- <?php
- 	// gọi class adminlogin
- 	$class = new adminlogin(); 
- 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
- 		// LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
- 		$adminUser = $_POST['adminUser'];
- 		$adminPass = md5($_POST['adminPass']);
+<?php include '../controllers/adminControllers/loginController.php'; ?>
 
- 		$login_check = $class -> login_admin($adminUser,$adminPass); // hàm check User and Pass khi submit lên
-
- 	}
-  ?>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">

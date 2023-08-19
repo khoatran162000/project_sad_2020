@@ -1,16 +1,8 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../model/brand.php';  ?>
+<?php include '../controllers/adminControllers/brandaddController.php'; ?>
 
-<?php include '../classes/brand.php';  ?>
-<?php
-    // gọi class category
-    $brand = new brand(); 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $brandName = $_POST['brandName'];
-        $insertBrand = $brand -> insert_brand($brandName); // hàm check catName khi submit lên
-    }
-  ?> 
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Add New Brand</h2>      

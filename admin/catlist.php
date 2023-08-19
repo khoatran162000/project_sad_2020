@@ -1,17 +1,7 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/category.php';  ?>
-<?php
-    // gọi class category
-    $cat = new category();     
-    if(!isset($_GET['delid']) || $_GET['delid'] == NULL){
-        // echo "<script> window.location = 'catlist.php' </script>";
-        
-    }else {
-        $id = $_GET['delid']; // Lấy catid trên host
-        $delCat = $cat -> del_category($id); // hàm check delete Name khi submit lên
-    }
- ?>
+<?php include '../model/category.php';  ?>
+<?php include '../controllers/adminControllers/catlistController.php'; ?>
 
         <div class="grid_10">
             <div class="box round first grid">
@@ -32,7 +22,7 @@
 					</thead>
 					<tbody>
 						<?php 
-							$show_cat = $cat -> show_category();
+							$show_cat = $cat -> showCategory();
 							if($show_cat){
 								$i = 0;
 								while($result = $show_cat -> fetch_assoc()){

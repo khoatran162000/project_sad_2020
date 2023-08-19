@@ -1,40 +1,17 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+	include 'controllers/detailsController.php';
  ?>
-<?php 
-	if(!isset($_GET['proid']) || $_GET['proid'] == NULL){
-        echo "<script> window.location = '404.php' </script>";
-        
-    }else {
-        $id = $_GET['proid']; // Lấy productid trên host
-    }
-	$customer_id = Session::get('customer_id'); // bỏ $ nha chú , $ là biến chứ không phải thuộc tính 
-	//$customer_id = Session::get('$customer_id'); // dòng lỗi ,nản chú ghê,easy vậy mà
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['compare'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $productid = $_POST['productid'];
-        $insertCompare = $product -> insertCompare($productid, $customer_id); // hàm check catName khi submit lên
-    }
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $productid = $_POST['productid'];
-        $insertWishlist = $product -> insertWishlist($productid, $customer_id); // hàm check catName khi submit lên
-    }
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $quantity = $_POST['quantity'];
-        $insertCart = $ct -> add_to_cart($id, $quantity); // hàm check catName khi submit lên
-    }  
- ?>
+
  <div class="main">
     <div class="content">
     	<div class="section group">
     		<?php 
-    		$get_product_details = $product->get_details($id);
+    		$get_product_details = $product->getDetails($id);
     		if ($get_product_details) {
     			while ($result_details = $get_product_details->fetch_assoc()) {
-    				# code...
+    				
     			
     		 ?>
 				<div class="cont-desc span_1_of_2">				
@@ -45,7 +22,7 @@
 					<h2><?php echo $result_details['productName'] ?> </h2>
 					<p><?php echo $fm->textShorten($result_details['product_desc'], 150) ?></p>					
 					<div class="price">
-						<p>Price: <span><?php echo $fm->format_currency($result_details['price'])." VND" ?></span></p>
+						<p>Price: <span><?php echo $fm->formatCurrency($result_details['price'])." VND" ?></span></p>
 						<p>Category: <span><?php echo $result_details['catName'] ?></span></p>
 						<p>Brand:<span><?php echo $result_details['brandName'] ?></span></p>
 					</div>
@@ -83,7 +60,7 @@
 	
 					$login_check = Session::get('customer_login'); 
 						if($login_check){
-							echo '<input type="submit" class="buysubmit" name="compare" value="Compare Products"/>'.'  ';
+							echo '<input type="submit" class="sub-submit" name="compare" value="Compare Products"/>'.'  ';
 							
 						}else{
 							echo '';
@@ -104,7 +81,7 @@
 					$login_check = Session::get('customer_login'); 
 						if($login_check){
 							
-							echo '<input type="submit" class="buysubmit" name="wishlist" value="Add to wishlist" />';
+							echo '<input type="submit" class="sub-submit" name="wishlist" value="Add to wishlist" />';
 						}else{
 							echo '';
 						}
@@ -134,7 +111,7 @@
 					<h2>Category</h2>
 					<ul>
 						<?php 
-						$getall_category = $cat->show_category_fontend();
+						$getall_category = $cat->showCategoryFrontend();
 							if ($getall_category) {
 								while ($result_allcat = $getall_category->fetch_assoc()) {
 									

@@ -1,27 +1,9 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+    include 'controllers/profileController.php';
  ?>
- <?php 
-	  $login_check = Session::get('customer_login');
-	  if ($login_check==false) {
-	  	header('Location:login.php');
-	  }
-	   ?>
-<?php 
-	// if(!isset($_GET['proid']) || $_GET['proid'] == NULL){
- //        echo "<script> window.location = '404.php' </script>";
-        
- //    }else {
- //        $id = $_GET['proid']; // Lấy productid trên host
- //    }
 
- //    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
- //        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
- //        $quantity = $_POST['quantity'];
- //        $AddtoCart = $ct -> add_to_cart($id, $quantity); // hàm check catName khi submit lên
- //    } 
- ?>
  <div class="main">
     <div class="content">
     	<div class="section group">
@@ -34,7 +16,7 @@
     	<table class="tblone">
     		<?php 
     		$id = Session::get('customer_id');
-    		$get_customers = $cs->show_customers($id);
+    		$get_customers = $cs->showCustomers($id);
     		if ($get_customers) {
     			while ($result = $get_customers->fetch_assoc()) {
     			

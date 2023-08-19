@@ -1,17 +1,7 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/brand.php';  ?>
-<?php
-    // gọi class category
-    $brand = new brand();     
-    if(!isset($_GET['delid']) || $_GET['delid'] == NULL){
-        // echo "<script> window.location = 'catlist.php' </script>";
-        
-    }else {
-        $id = $_GET['delid']; // Lấy catid trên host
-        $delbrand = $brand -> del_brand($id); // hàm check delete Name khi submit lên
-    }
- ?> 
+<?php include '../model/brand.php';  ?>
+<?php include '../controllers/adminControllers/brandlistController.php'; ?> 
 
         <div class="grid_10">
             <div class="box round first grid">
@@ -32,7 +22,7 @@
 					</thead>
 					<tbody>
 						<?php 
-							$show_brand = $brand -> show_brand();
+							$show_brand = $brand -> showBrand();
 							if($show_brand){
 								$i = 0;
 								while($result = $show_brand -> fetch_assoc()){

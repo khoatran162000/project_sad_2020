@@ -2,6 +2,7 @@
     include '../lib/session.php';
      Session::checkSession();
  ?>
+ 
 
 <?php
   header("Cache-Control: no-cache, must-revalidate");
@@ -46,10 +47,10 @@
         <div class="grid_12 header-repeat">
             <div id="branding">
                 <div class="floatleft logo">
-                    <img src="img/livelogo.png" alt="Logo" />
+                    <img src="img/logo.png" alt="Logo" />
                 </div>
                 <div class="floatleft middle">
-                    <h1>TECH STORE WEBPAGE</h1>
+                    <h1>TECH STORE ADMIN PAGE</h1>
                     <p>www.fittechstore.com</p>
                 </div>
                 <div class="floatright">

@@ -1,28 +1,11 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+	include 'controllers/loginController.php';
  ?>
- <?php 
-	$login_check = Session::get('customer_login');
-	if ($login_check) {
-		header('Location:order.php'); 
-	}
-?>
 
-<?php
-    // gọi class category
-     
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $insertCustomer = $cs -> insert_customer($_POST); // hàm check catName khi submit lên
-    }
- ?>
- <?php 
- 	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $login_Customer = $cs -> login_customer($_POST); // hàm check catName khi submit lên
-    }
- ?>
+
+
  <div class="main">
     <div class="content">
     	 <div class="login_panel">
@@ -38,9 +21,8 @@
                     <input type="password" name="password" class="field" placeholder="Password" >
                  
                  <!-- <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p> -->
-                    <div class="buttons"><div><input type="submit" name="login" class"grey" value="Login" style="
-    background: #ffffff;
-"></div></div>
+                    <div class="buttons"><div><input type="submit" name="login" class="login-btn" value="Login">
+                    </div></div>
                     </form>
                     </div>
 
@@ -90,7 +72,7 @@
 		    	</td>
 		    </tr> 
 		    </tbody></table> 
-		   <div class="search"><div><input type="submit" name="submit" class"grey" value="Create account" style="
+		   <div class="search"><div><input type="submit" name="submit" class="grey" value="Create account" style="
     background: #ffffff;
 "></div></div>
 		    

@@ -1,15 +1,9 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+    include 'controllers/successController.php';
  ?>
-<?php 
-	if(isset($_GET['oderid']) AND $_GET['orderid'] == 'order'){
-        $customer_id = Session::get('customer_id');
-        $insertOrder = $ct->insertOrder($customer_id);
-        $delCart = $ct->del_all_data_cart();
-        header('Location:success.php');
-    }
- ?>
+
  <style type="text/css">
 	.box_left {
     width: 50%;
@@ -54,7 +48,7 @@
             <p class="success_note">Total money you have paid: <?php 
                 $vat = $amount * 0.1;
                 $total = $vat + $amount;
-                echo $total.' VNĐ';
+                echo $total.' VND';
              ?></p>
             <p class="success_note">We will contact with you as soon as possible, for more details, <a href="orderdetails.php">click here</a></p>
  		</div>

@@ -1,21 +1,12 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/category.php';  ?>
-<?php include '../classes/cart.php';  ?>
-<?php include '../classes/brand.php';  ?> 
-<?php include '../classes/product.php';  ?>
+<?php include '../model/category.php';  ?>
+<?php include '../model/cart.php';  ?>
+<?php include '../model/brand.php';  ?> 
+<?php include '../model/product.php';  ?>
 <?php require_once '../helpers/format.php'; ?>
-<?php 
-	$pd = new product();
-	$fm = new Format();
-	if(!isset($_GET['productid']) || $_GET['productid'] == NULL){
-        // echo "<script> window.location = 'catlist.php' </script>";
-        
-    }else {
-        $id = $_GET['productid']; // Lấy catid trên host
-        $delProduct = $pd -> del_product($id); // hàm check delete Name khi submit lên
-    }
- ?>
+<?php include '../controllers/adminControllers/productlistController.php'; ?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Product List</h2>
@@ -24,10 +15,10 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Code</th>
+<!-- 					<th>Code</th> -->
 					<th>Product Name</th>
 					<th>Import</th>
-					<th>Import Quantity</th>
+					<th>Original Quantity</th>
 					<th>Sold Quantity</th>
 					<th>Remain Quantity</th>
 					<th>Price</th>
@@ -42,7 +33,7 @@
 			<tbody>
 				<?php 
 				
-				$pdlist = $pd->show_product();
+				$pdlist = $pd->showProduct();
 				$i = 0;
 				
 				
@@ -55,7 +46,7 @@
 				 ?>
 				<tr class="odd gradeX">
 					<td><?php echo $i ?></td>
-					<td><?php echo $result['product_code'] ?></td>
+<!-- 					<td><?php echo $result['product_code'] ?></td> -->
 					<td><?php echo $result['productName'] ?></td>
 					<td><a href="productmorequantity.php?productid=<?php echo $result['productId'] ?>">Import Product</a></td>
 					<td>

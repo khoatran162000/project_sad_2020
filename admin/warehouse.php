@@ -1,21 +1,12 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/category.php';  ?>
-<?php include '../classes/cart.php';  ?>
-<?php include '../classes/brand.php';  ?> 
-<?php include '../classes/product.php';  ?>
+<?php include '../model/category.php';  ?>
+<?php include '../model/cart.php';  ?>
+<?php include '../model/brand.php';  ?> 
+<?php include '../model/product.php';  ?>
 <?php require_once '../helpers/format.php'; ?>
-<?php 
-	$pd = new product();
-	$fm = new Format();
-	if(!isset($_GET['productid']) || $_GET['productid'] == NULL){
-        // echo "<script> window.location = 'catlist.php' </script>";
-        
-    }else {
-        $id = $_GET['productid']; // Lấy catid trên host
-        $delProduct = $pd -> del_product($id); // hàm check delete Name khi submit lên
-    }
- ?>
+<?php include '../controllers/adminControllers/warehouseController.php'; ?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Warehouse Management</h2>
@@ -27,8 +18,8 @@
 					<th>Code</th>
 					<th>Product Name</th>
 				
-					<th>Original Quantity</th>
-					<th>Sold Quantity</th>
+					<th>First Quantity</th>
+					<th>Sold</th>
 				
 					<th>Before Import</th>
 					<th>Import Quantity</th>
@@ -43,7 +34,7 @@
 			<tbody>
 				<?php 
 				
-				$pdlist = $pd->show_product_warehouse();
+				$pdlist = $pd->showProductWarehouse();
 				$i = 0;
 				
 				

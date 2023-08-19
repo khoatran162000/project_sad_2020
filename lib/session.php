@@ -2,7 +2,7 @@
 /**
 *Session Class
 **/
-// init khởi tạo file session
+// init khoi tao file session
 class Session{
  public static function init(){
   if (version_compare(phpversion(), '5.4.0', '<')) {
@@ -19,7 +19,7 @@ class Session{
  public static function set($key, $val){
     $_SESSION[$key] = $val;
  }
-//set key thành giá trị
+//set key thanh gia tri
 
  public static function get($key){
     if (isset($_SESSION[$key])) {
@@ -36,7 +36,7 @@ class Session{
      header("Location:login.php");
     }
  }
-//check phiên làm việc có tồn tại hay không
+//check phien lam viec co ton tai hay khong
  public static function checkLogin(){
     self::init();
     if (self::get("adminlogin")== true) {
@@ -48,6 +48,6 @@ class Session{
   session_destroy();
   header("Location:login.php");
  }
- // xóa or hủy phiên làm việc
+ // xoa hoac huy phien lam viec
 }
 ?>

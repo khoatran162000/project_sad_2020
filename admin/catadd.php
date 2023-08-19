@@ -1,15 +1,7 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-
-<?php include '../classes/category.php';  ?>
-<?php
-    // gọi class category
-    $cat = new category(); 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $catName = $_POST['catName'];
-        $insertCat = $cat -> insert_category($catName);
-    }
-  ?>
+<?php include '../model/category.php';  ?>
+<?php include '../controllers/adminControllers/cataddController.php'; ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Add New Category</h2>      

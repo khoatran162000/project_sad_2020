@@ -1,23 +1,7 @@
  <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
- ?>
-<?php
-    if(isset($_GET['cartid'])){
-        $cartid = $_GET['cartid']; 
-        $delcart = $ct->del_product_cart($cartid);
-    }
-        
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $cartId = $_POST['cartId'];
-        $proId = $_POST['proId'];
-        $quantity = $_POST['quantity'];
-        $update_quantity_Cart = $ct -> update_quantity_Cart($proId,$cartId, $quantity); // hàm check catName khi submit lên
-    	if ($quantity <= 0) {
-    		$delcart = $ct->del_product_cart($cartId);
-    	}
-    } 
+	include 'controllers/cartController.php';
  ?>
  <?php
 	if(!isset($_GET['id'])){
@@ -54,7 +38,7 @@
 								<th width="10%">Action</th>
 							</tr>
 							<?php 
-							$get_product_cart = $ct->get_product_cart();
+							$get_product_cart = $ct->getProductCart();
 							if($get_product_cart){
 								$subtotal = 0;
 								$qty = 0;
@@ -65,7 +49,7 @@
 							<tr>
 								<td><?php echo $result['productName'] ?></td>
 								<td><img src="admin/upload/<?php echo $result['image'] ?>" alt=""/></td>
-								<td><?php echo $fm->format_currency($result['price'])." VND" ?></td>
+								<td><?php echo $fm->formatCurrency($result['price'])." VND" ?></td>
 								<td>
 									<form action="" method="post">
 										<input type="hidden" name="cartId" min="0" value="<?php echo $result['cartId'] ?>"/>
@@ -77,7 +61,7 @@
 								<td>
 									<?php 
 									$total = $result['price'] * $result['quantity'];
-									echo $fm->format_currency($total)." VND";
+									echo $fm->formatCurrency($total)." VND";
 									 ?>
 								</td>
 								<td><a href="?cartid=<?php echo $result['cartId'] ?>">Delete</a></td>
@@ -92,7 +76,7 @@
 	
 						</table>
 						<?php
-							$check_cart = $ct->check_cart();
+							$check_cart = $ct->checkCart();
 							if ($check_cart) {
 
 							 ?>
@@ -100,7 +84,7 @@
 							<tr>
 								<th>Sub Total : </th>
 								<td>
-								<?php echo $fm->format_currency($subtotal)." VND";
+								<?php echo $fm->formatCurrency($subtotal)." VND";
 
 									  Session::set('sum',$subtotal);
 									  Session::set('qty',$qty);
@@ -116,7 +100,7 @@
 								<td><?php 
 								$vat = $subtotal * 0.1;
 								$grandTotal = $subtotal + $vat;
-								echo $fm->format_currency($grandTotal)." VND";
+								echo $fm->formatCurrency($grandTotal)." VND";
 								 ?> </td>
 							</tr>
 					   </table>

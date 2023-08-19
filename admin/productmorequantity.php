@@ -1,23 +1,11 @@
 
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/category.php';  ?>
-<?php include '../classes/brand.php';  ?> 
-<?php include '../classes/product.php';  ?>
-<?php
-    // gọi class category
-    $pd = new product();
-    if(!isset($_GET['productid']) || $_GET['productid'] == NULL){
-        echo "<script> window.location = 'productlist.php' </script>";
-        
-    }else {
-        $id = $_GET['productid']; // Lấy productid trên host
-    } 
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $updatemoreProduct = $pd->update_quantity_product($_POST, $_FILES, $id); // hàm check catName khi submit lên
-    }
-  ?>
+<?php include '../model/category.php';  ?>
+<?php include '../model/brand.php';  ?> 
+<?php include '../model/product.php';  ?>
+<?php include '../controllers/adminControllers/productmorequantityController.php'; ?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Import Quantity</h2>
@@ -46,14 +34,14 @@
                         <input readonly name="productName" value="<?php echo $result_product['productName'] ?>" type="text" class="medium" />
                     </td>
                 </tr>
-                  <tr>
+<!--                   <tr>
                     <td>
                         <label>Product Code</label>
                     </td>
                     <td>
                         <input readonly name="product_code" value="<?php echo $result_product['product_code'] ?>" type="text" class="medium" />
                     </td>
-                </tr>
+                </tr> -->
                  <tr>
                     <td>
                         <label>Remain Quantity</label>

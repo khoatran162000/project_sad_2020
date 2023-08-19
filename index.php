@@ -13,7 +13,7 @@
     	</div>
 	      <div class="section group">
 	      	<?php 
-	      	$product_featheread = $product->getproduct_featheread();
+	      	$product_featheread = $product->getproductFeatheread();
 	      	if($product_featheread){
 	      		while ($result = $product_featheread->fetch_assoc()) {
 	      			      	
@@ -22,7 +22,7 @@
 					 <a href="details.php?proid=<?php echo $result['productId'] ?>"><img src="admin/upload/<?php echo $result['image'] ?>" alt="" /></a>
 					 <h2><?php echo $result['productName'] ?></h2>
 					 <p><?php echo $fm->textShorten($result['product_desc'], 50) ?></p>
-					 <p><span class="price"><?php echo $fm->format_currency($result['price'])." "."VND" ?></span></p>
+					 <p><span class="price"><?php echo $fm->formatCurrency($result['price'])." "."VND" ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result['productId'] ?>" class="details">Details</a></span></div>
 				</div>
 				<?php 
@@ -38,7 +38,7 @@
     	</div>
 			<div class="section group">
 			<?php 
-	      	$product_new = $product->getproduct_new();
+	      	$product_new = $product->getproductNew();
 	      	if($product_new){
 	      		while ($result_new = $product_new->fetch_assoc()) {
 	      			      	
@@ -47,7 +47,7 @@
 					 <a href="details.php?proid=<?php echo $result_new['productId'] ?>"><img src="admin/upload/<?php echo $result_new['image'] ?>" alt="" /></a>
 					 <h2><?php echo $result_new['productName'] ?></h2>
 					 <p><?php echo $fm->textShorten($result_new['product_desc'], 50) ?></p>
-					 <p><span class="price"><?php echo $fm->format_currency($result_new['price'])." VND" ?></span></p>
+					 <p><span class="price"><?php echo $fm->formatCurrency($result_new['price'])." VND" ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result_new['productId'] ?>" class="details">Details</a></span></div>
 				</div>
 			<?php 

@@ -33,7 +33,7 @@ class Format{
     }
     return $title = ucfirst($title);
    }
- public function format_currency($n=0){
+ public function formatCurrency($n=0){
         $n=(string)$n;
         $n=strrev($n);
         $res='';

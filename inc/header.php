@@ -9,7 +9,7 @@
 	include 'helpers/format.php';
 
 	spl_autoload_register(function($class){
-		include_once "classes/".$class.".php";
+		include_once "model/".$class.".php";
 	});
 		
 
@@ -31,7 +31,7 @@
 
 <!DOCTYPE HTML>
 <head>
-<title>Store Website</title>
+<title>FIT Tech Store</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
@@ -55,26 +55,27 @@
   <div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt="" /></a>
+				<a href="index.php"><img  class='big-logo'src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box">
-				    <form>
-				    	<input type="text" value="Find Product" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Find Product';}"><input type="submit" value="Search">
+				    <form action="search.php" method="post">
+				    	<input type="text" placeholder="Find product" name="tukhoa">
+						<input type="submit" name="search_product" value="Search">
 				    </form>
 			    </div>
 			    <div class="shopping_cart">
 					<div class="cart">
-						<a href="#" title="View my shopping cart" rel="nofollow">
+						<a href="cart.php" title="View my shopping cart" rel="nofollow">
 								<span class="cart_title">Cart</span>
 								<span class="no_product">
 									
 								<?php
-								$check_cart = $ct->check_cart();
+								$check_cart = $ct->checkCart();
 								if ($check_cart) {
 								 	$sum = Session::get("sum");
 								 	$qty = Session::get("qty");
-									echo $fm->format_currency($sum).'VND';
+									echo $fm->formatCurrency($sum).'VND';
 
 								 }else {
 								 	echo 'Empty';
@@ -89,8 +90,8 @@
 			<?php 
 				if(isset($_GET['customer_id'])){
 					$customer_id = $_GET['customer_id'];
-					$delCart = $ct->del_all_data_cart();
-					$delCompare = $ct->del_compare($customer_id);
+					$delCart = $ct->delAllDataCart();
+					$delCompare = $ct->delCompare($customer_id);
 					Session::destroy();
 				}
 			?>   
@@ -116,7 +117,7 @@
 	  <li><a href="products.php">Products</a> </li>
 	  
 	  <?php 
-	  $check_cart = $ct->check_cart();
+	  $check_cart = $ct->checkCart();
 	  if ($check_cart==true) {
 	  	echo '<li><a href="cart.php">Cart</a></li>';
 	  }else {
@@ -126,7 +127,7 @@
 
 	  <?php 
 	  $customer_id = Session::get('customer_id'); 
-	  $check_order = $ct->check_order($customer_id);
+	  $check_order = $ct->checkOrder($customer_id);
 	  if ($check_order==true) {
 	  	echo '<li><a href="orderdetails.php">Order</a></li>';
 	  }else {

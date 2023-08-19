@@ -1,23 +1,8 @@
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../model/category.php';  ?>
+<?php include '../controllers/adminControllers/cateditController.php'; ?>
 
-<?php include '../classes/category.php';  ?>
-<?php
-    $cat = new category(); 
-    if(!isset($_GET['catid']) || $_GET['catid'] == NULL){
-        echo "<script> window.location = 'catlist.php' </script>";
-        
-    }else {
-        $id = $_GET['catid']; // Lấy catid trên host
-    }
-    // gọi class category
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $catName = $_POST['catName'];
-        $updateCat = $cat -> update_category($catName,$id); // hàm check catName khi submit lên
-    }
-    
-  ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Edit Category</h2>      

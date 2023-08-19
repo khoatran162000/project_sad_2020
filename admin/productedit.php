@@ -1,23 +1,11 @@
 
 <?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/category.php';  ?>
-<?php include '../classes/brand.php';  ?> 
-<?php include '../classes/product.php';  ?>
-<?php
-    // gọi class category
-    $pd = new product();
-    if(!isset($_GET['productid']) || $_GET['productid'] == NULL){
-        echo "<script> window.location = 'productlist.php' </script>";
-        
-    }else {
-        $id = $_GET['productid']; // Lấy productid trên host
-    } 
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $updateProduct = $pd -> update_product($_POST, $_FILES, $id); // hàm check catName khi submit lên
-    }
-  ?>
+<?php include '../model/category.php';  ?>
+<?php include '../model/brand.php';  ?> 
+<?php include '../model/product.php';  ?>
+<?php include '../controllers/adminControllers/producteditController.php'; ?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Edit Product Information</h2>
@@ -30,7 +18,7 @@
          $get_product_by_id = $pd->getproductbyId($id);
          if($get_product_by_id){
             while ($result_product = $get_product_by_id->fetch_assoc()) {
-                # code...
+                
             
           ?>   
         <div class="block">
@@ -70,8 +58,8 @@
                         <select id="select" name="category">
                             <option>Select Category</option>
                             <?php 
-                            $cat = new category();
-                            $catlist = $cat->show_category();
+                            $cat = new Category();
+                            $catlist = $cat->showCategory();
                             if($catlist){
                                 while ($result = $catlist->fetch_assoc()){
                             
@@ -98,8 +86,8 @@
                         <select id="select" name="brand">
                             <option>Select Brand</option>
                             <?php 
-                            $brand = new brand();
-                            $brandlist = $brand->show_brand();
+                            $brand = new Brand();
+                            $brandlist = $brand->showBrand();
                             if($brandlist){
                                 while ($result = $brandlist->fetch_assoc()){
                             

@@ -1,15 +1,10 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+	include 'controllers/orderController.php';
  ?>	
- <?php 
+ 
 
-	$login_check = Session::get('customer_login');
-	if ($login_check==false) {
-		header('Location:login.php'); 
-	}
-
- ?>
 <div class="main">
     <div class="content">
     	<div class="cartoption">		

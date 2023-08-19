@@ -1,16 +1,10 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/category.php';  ?>
-<?php include '../classes/brand.php';  ?> 
-<?php include '../classes/product.php';  ?>
-<?php
-    // gọi class category
-    $pd = new product(); 
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
-        // LẤY DỮ LIỆU TỪ PHƯƠNG THỨC Ở FORM POST
-        $insertProduct = $pd -> insert_product($_POST, $_FILES); // hàm check catName khi submit lên
-    }
-  ?>
+<?php include '../model/category.php';  ?>
+<?php include '../model/brand.php';  ?> 
+<?php include '../model/product.php';  ?>
+<?php include '../controllers/adminControllers/productaddController.php'; ?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
@@ -56,8 +50,8 @@
                         <select id="select" name="category">
                             <option>Select category</option>
                             <?php 
-                            $cat = new category();
-                            $catlist = $cat->show_category();
+                            $cat = new Category();
+                            $catlist = $cat->showCategory();
                             if($catlist){
                                 while ($result = $catlist->fetch_assoc()){
                             
@@ -79,8 +73,8 @@
                         <select id="select" name="brand">
                             <option>Select brand</option>
                             <?php 
-                            $brand = new brand();
-                            $brandlist = $brand->show_brand();
+                            $brand = new Brand();
+                            $brandlist = $brand->showBrand();
                             if($brandlist){
                                 while ($result = $brandlist->fetch_assoc()){
                             

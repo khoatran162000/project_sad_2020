@@ -1,14 +1,9 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+	include 'controllers/offlinepaymentController.php';
  ?>
-<?php 
-	if(isset($_GET['orderid']) && $_GET['orderid']=='order'){
-       $customer_id = Session::get('customer_id');
-       $insertOrder = $ct->insertOrder($customer_id);
-       $delCart = $ct->del_all_data_cart();
-       header('Location:success.php');
-    }
+
  ?>
  <style type="text/css">
 	.box_left {
@@ -71,7 +66,7 @@
 								
 							</tr>
 							<?php 
-							$get_product_cart = $ct->get_product_cart();
+							$get_product_cart = $ct->getProductCart();
 							if($get_product_cart){
 								$subtotal = 0;
 								$qty = 0;
@@ -106,7 +101,7 @@
 	
 						</table>
 						<?php
-							$check_cart = $ct->check_cart();
+							$check_cart = $ct->checkCart();
 							if ($check_cart) {
 
 							 ?>
@@ -147,7 +142,7 @@
     			<table class="tblone">
 		    		<?php 
 		    		$id = Session::get('customer_id');
-		    		$get_customers = $cs->show_customers($id);
+		    		$get_customers = $cs->showCustomers($id);
 		    		if ($get_customers) {
 		    			while ($result = $get_customers->fetch_assoc()) {
 		    			

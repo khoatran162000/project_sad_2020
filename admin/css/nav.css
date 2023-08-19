@@ -8,7 +8,7 @@ Navigation
 ul.nav,
 ul.nav * { margin:0;padding:0;}
 ul.nav {
-  background: rgba(0, 0, 0, 0) url("../img/nav-repeat2.jpg") repeat-x scroll 0 8px !important;
+  background: black !important;
   height: 58px;
   max-width: 100%;
   position: relative;
@@ -102,6 +102,7 @@ ul.main li a {
 	line-height:3.7em;
 	border:0;
 	color:#fff;
+	background-color: black;a
 
 }
 ul.main li ul li a {

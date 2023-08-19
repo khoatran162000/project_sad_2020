@@ -2,28 +2,18 @@
 <?php include 'inc/sidebar.php';?>
 <?php 
     $filepath = realpath(dirname(__FILE__));
-    include_once ($filepath.'/../classes/customer.php');
+    include_once ($filepath.'/../model/customer.php');
     include_once ($filepath.'/../helpers/format.php');
  ?>
-<?php
-    $cs = new customer(); 
-    if(!isset($_GET['customerid']) || $_GET['customerid'] == NULL){
-        echo "<script> window.location = 'inbox.php' </script>";
-        
-    }else {
-        $id = $_GET['customerid']; // Lấy catid trên host
-    }
-    
-    
-    
-  ?>
+<?php include '../controllers/adminControllers/customerController.php'; ?>
+
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Customer Information</h2>      
                <div class="block copyblock"> 
                 
                  <?php 
-                    $get_customer = $cs->show_customers($id);
+                    $get_customer = $cs->showCustomers($id);
                     if($get_customer){
                         while ($result = $get_customer->fetch_assoc()) {
                             
@@ -50,13 +40,6 @@
                             <td>:</td>
                             <td>
                                 <input type="text" readonly="readonly" value="<?php echo $result['city']; ?>" name="catName" class="medium" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>:</td>
-                            <td>
-                                <input type="text" readonly="readonly" value="<?php echo $result['country']; ?>" name="catName" class="medium" />
                             </td>
                         </tr>
                         <tr>

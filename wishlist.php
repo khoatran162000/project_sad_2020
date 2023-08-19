@@ -1,15 +1,9 @@
 <?php 
 	include 'inc/header.php';
 	// include 'inc/slider.php';
+	include 'controllers/wishlistController.php';
  ?>
- <?php 
 
-    if(isset($_GET['proid'])){
-    	$customer_id = Session::get('customer_id');
-     	$proid = $_GET['proid']; 
-      	$delwlist = $product->del_wlist($proid,$customer_id);
- 	}
-  ?>
  <div class="main">
     <div class="content">
     	<div class="cartoption">		
@@ -27,7 +21,7 @@
 							</tr>
 							<?php 
 							$customer_id = Session::get('customer_id');
-							$get_wishlist = $product->get_wishlist($customer_id);
+							$get_wishlist = $product->getWishlist($customer_id);
 							if($get_wishlist){
 								$i = 0;
 								while ($result = $get_wishlist->fetch_assoc()) {
